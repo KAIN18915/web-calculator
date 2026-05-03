@@ -1,0 +1,261 @@
+/* ============================================================
+   CSS Variables & Reset
+============================================================ */
+:root {
+  --accent: #ff9500;
+  --accent-dark: #e08600;
+  --operator-bg: #ff9500;
+  --equals-bg: #30d158;
+  --equals-dark: #28b84c;
+  --function-bg-dark: #636366;
+  --number-bg-dark: #2c2c2e;
+  --btn-text-dark: #ffffff;
+  --display-bg-dark: #1c1c1e;
+  --bg-dark: #111111;
+  --function-bg-light: #a8a8ad;
+  --number-bg-light: #e5e5ea;
+  --btn-text-light: #000000;
+  --display-bg-light: #f2f2f7;
+  --bg-light: #e8e8ed;
+  --radius: 50%;
+  --btn-size: 70px;
+  --gap: 12px;
+  --font: system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.3s;
+}
+
+body.dark  { background: var(--bg-dark); }
+body.light { background: var(--bg-light); }
+
+/* ============================================================
+   Wrapper & Header
+============================================================ */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 360px;
+  padding: 16px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+body.dark  .app-title { color: #aaa; }
+body.light .app-title { color: #555; }
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+.theme-toggle:hover { transform: scale(1.15); }
+
+/* ============================================================
+   Calculator Container
+============================================================ */
+.calculator {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transition: background 0.3s;
+}
+body.dark  .calculator { background: #1c1c1e; }
+body.light .calculator { background: #ffffff; }
+
+/* ============================================================
+   Display
+============================================================ */
+.display {
+  padding: 20px 24px 12px;
+  text-align: right;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+body.dark  .display { background: var(--display-bg-dark); }
+body.light .display { background: var(--display-bg-light); }
+
+.expression {
+  font-size: 14px;
+  min-height: 20px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body.dark  .expression { color: #888; }
+body.light .expression { color: #999; }
+
+.current-value {
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+body.dark  .current-value { color: #ffffff; }
+body.light .current-value { color: #000000; }
+
+/* ============================================================
+   Button Grid
+============================================================ */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+.btn {
+  height: var(--btn-size);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 22px;
+  font-family: var(--font);
+  font-weight: 400;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.btn:active { transform: scale(0.92); }
+.btn:hover  { filter: brightness(1.15); }
+
+/* Number buttons */
+.btn-number {
+  color: var(--btn-text-dark);
+}
+body.dark  .btn-number { background: var(--number-bg-dark); color: #fff; }
+body.light .btn-number { background: var(--number-bg-light); color: #000; }
+
+/* Zero button (spans 2 columns) */
+.btn-zero {
+  grid-column: span 2;
+  border-radius: 40px;
+  text-align: left;
+  padding-left: 26px;
+}
+
+/* Function buttons (AC, ±, %) */
+.btn-function {
+  font-size: 20px;
+}
+body.dark  .btn-function { background: var(--function-bg-dark); color: #fff; }
+body.light .btn-function { background: var(--function-bg-light); color: #000; }
+
+/* Operator buttons (÷, ×, −, +) */
+.btn-operator {
+  background: var(--operator-bg);
+  color: #ffffff;
+  font-size: 26px;
+}
+.btn-operator.active {
+  background: #ffffff;
+  color: var(--operator-bg);
+}
+
+/* Backspace */
+.btn-backspace {
+  font-size: 20px;
+}
+body.dark  .btn-backspace { background: var(--number-bg-dark); color: #ff453a; }
+body.light .btn-backspace { background: var(--number-bg-light); color: #ff3b30; }
+
+/* Equals */
+.btn-equals {
+  background: var(--equals-bg);
+  color: #ffffff;
+  font-size: 26px;
+}
+.btn-equals:hover { filter: brightness(1.1); }
+
+/* ============================================================
+   History Panel
+============================================================ */
+.history-panel {
+  padding: 8px 16px 16px;
+  border-top: 1px solid;
+}
+body.dark  .history-panel { border-color: #3a3a3c; }
+body.light .history-panel { border-color: #d1d1d6; }
+
+.history-header {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+body.dark  .history-header { color: #636366; }
+body.light .history-header { color: #aeaeb2; }
+
+.history-list {
+  list-style: none;
+  max-height: 90px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.history-list li {
+  font-size: 13px;
+  padding: 2px 0;
+  text-align: right;
+  animation: fadeIn 0.2s ease;
+}
+body.dark  .history-list li { color: #8e8e93; }
+body.light .history-list li { color: #6d6d72; }
+
+.history-list li span {
+  font-weight: 600;
+}
+body.dark  .history-list li span { color: #d1d1d6; }
+body.light .history-list li span { color: #3a3a3c; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Responsive
+============================================================ */
+@media (max-width: 400px) {
+  :root {
+    --btn-size: 62px;
+    --gap: 10px;
+  }
+  .current-value { font-size: 44px; }
+}

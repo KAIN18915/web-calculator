@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+  <div class="wrapper">
+    <header class="app-header">
+      <span class="app-title">Calculator</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">☀️</button>
+    </header>
+
+    <div class="calculator">
+      <!-- ディスプレイ -->
+      <div class="display">
+        <div class="expression" id="expression"></div>
+        <div class="current-value" id="currentValue">0</div>
+      </div>
+
+      <!-- ボタングリッド -->
+      <div class="buttons">
+        <!-- Row 1 -->
+        <button class="btn btn-function" data-action="clear">AC</button>
+        <button class="btn btn-function" data-action="toggle-sign">±</button>
+        <button class="btn btn-function" data-action="percent">%</button>
+        <button class="btn btn-operator" data-action="operator" data-value="÷">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn btn-number" data-action="number" data-value="7">7</button>
+        <button class="btn btn-number" data-action="number" data-value="8">8</button>
+        <button class="btn btn-number" data-action="number" data-value="9">9</button>
+        <button class="btn btn-operator" data-action="operator" data-value="×">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn btn-number" data-action="number" data-value="4">4</button>
+        <button class="btn btn-number" data-action="number" data-value="5">5</button>
+        <button class="btn btn-number" data-action="number" data-value="6">6</button>
+        <button class="btn btn-operator" data-action="operator" data-value="−">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn btn-number" data-action="number" data-value="1">1</button>
+        <button class="btn btn-number" data-action="number" data-value="2">2</button>
+        <button class="btn btn-number" data-action="number" data-value="3">3</button>
+        <button class="btn btn-operator" data-action="operator" data-value="+">+</button>
+
+        <!-- Row 5 -->
+        <button class="btn btn-number btn-zero" data-action="number" data-value="0">0</button>
+        <button class="btn btn-number" data-action="decimal">.</button>
+        <button class="btn btn-backspace" data-action="backspace">⌫</button>
+        <button class="btn btn-equals" data-action="equals">=</button>
+      </div>
+
+      <!-- 履歴パネル -->
+      <div class="history-panel">
+        <div class="history-header">履歴</div>
+        <ul class="history-list" id="historyList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
